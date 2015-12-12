@@ -20,8 +20,8 @@ namespace HardwareMonitor.Utils
             {
                 { SensorType.Temperature, new TemperatureSensor() },
                 { SensorType.Clock, new ClockSensor() },
-                { SensorType.Load, new LoadSensor() }
-
+                { SensorType.Load, new LoadSensor() },
+                { SensorType.Power, new PowerSensor() }
             };
         }
 

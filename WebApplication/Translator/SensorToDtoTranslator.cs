@@ -15,13 +15,19 @@ namespace WebApplication.Translator
             {
                 { typeof(TemperatureSensor), SensorType.Temperature },
                 { typeof(ClockSensor), SensorType.Clock },
-                { typeof(LoadSensor), SensorType.Load }
+                { typeof(LoadSensor), SensorType.Load },
+                { typeof(PowerSensor), SensorType.Power }
             };
         }
 
         private ISensorDto DoTranslation(ISensor sensor)
         {
             return new SensorDto(sensor, _dtoStrategies[sensor.GetType()]);
+        }
+
+        public ISensorDto Translate(PowerSensor sensor)
+        {
+            return DoTranslation(sensor);
         }
 
         public ISensorDto Translate(LoadSensor sensor)

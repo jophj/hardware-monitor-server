@@ -12,7 +12,9 @@ namespace WebApplication
     public enum SensorType
     {
         Temperature,
-        Clock
+        Clock,
+        Load,
+        Power
     }
 
     public interface IComponentDto
