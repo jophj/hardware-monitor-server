@@ -12,34 +12,36 @@ namespace HardwareMonitor.Utils
 
     public class SensorConverter : ISensorConverter
     {
-        private Dictionary<SensorType, Func<OpenHardwareMonitor.Hardware.ISensor, Model.ISensor>> _sensorConverters;
+        private readonly Dictionary<SensorType, Model.ISensor> _sensorConverters;
 
         public SensorConverter()
         {
-            _sensorConverters = new Dictionary<SensorType, Func<OpenHardwareMonitor.Hardware.ISensor, Model.ISensor>>()
+            _sensorConverters = new Dictionary<SensorType, Model.ISensor>()
             {
-                {
-                    SensorType.Temperature,
-                    s => {
-                        return new TemperatureSensor()
-                        {
-                            Id = s.Identifier.ToString(),
-                            Name = s.Name,
-                            Value = s.Value,
-                            Min = s.Min,
-                            Max = s.Max
-                        };
-                    }
-                }
+                { SensorType.Temperature, new TemperatureSensor() },
+                { SensorType.Clock, new ClockSensor() }
+
             };
         }
 
-        public Model.ISensor ConvertSensor(OpenHardwareMonitor.Hardware.ISensor sensor)
+        private Model.ISensor FillSensorData(Model.ISensor sensor, OpenHardwareMonitor.Hardware.ISensor s) {
+            sensor.Id = s.Identifier.ToString();
+            sensor.Name = s.Name;
+            sensor.Value = s.Value;
+            sensor.Min = s.Min;
+            sensor.Max = s.Max;
+
+            return sensor;
+        }
+
+        public Model.ISensor ConvertSensor(OpenHardwareMonitor.Hardware.ISensor hardwareSensor)
         {
-            if (!_sensorConverters.ContainsKey(sensor.SensorType))
+            if (!_sensorConverters.ContainsKey(hardwareSensor.SensorType))
                 return null;
 
-            return _sensorConverters[sensor.SensorType](sensor);
+            Model.ISensor sensor = _sensorConverters[hardwareSensor.SensorType];
+            return FillSensorData(sensor, hardwareSensor);
+
         }
     }
 }

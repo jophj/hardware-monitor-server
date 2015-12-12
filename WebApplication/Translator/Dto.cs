@@ -11,7 +11,8 @@ namespace WebApplication
 
     public enum SensorType
     {
-        Temperature
+        Temperature,
+        Clock
     }
 
     public interface IComponentDto
@@ -57,13 +58,23 @@ namespace WebApplication
         public string SensorType { get; set; }
 
 
-        public SensorDto(TemperatureSensor sensor)
+        public SensorDto(ISensor sensor)
         {
             Id = sensor.Id;
             Name = sensor.Name;
             Value = sensor.Value;
             Max = sensor.Max;
             Min = sensor.Min;
+        }
+
+        public SensorDto(ISensor sensor, SensorType sensorType)
+        {
+            Id = sensor.Id;
+            Name = sensor.Name;
+            Value = sensor.Value;
+            Max = sensor.Max;
+            Min = sensor.Min;
+            SensorType = sensorType.ToString();
         }
     }
 }

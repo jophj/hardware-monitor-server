@@ -9,5 +9,6 @@
     public interface ISensorTranslator<TDest>
     {
         TDest Translate(TemperatureSensor sensor);
+        TDest Translate(ClockSensor clockSensor);
     }
 }
