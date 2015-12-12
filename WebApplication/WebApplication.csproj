@@ -120,7 +120,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AbstractApiController.cs" />
     <Compile Include="Controllers\CpuController.cs" />
+    <Compile Include="Controllers\GpuController.cs" />
     <Compile Include="Controllers\MemoryController.cs" />
     <Compile Include="Translator\Dto.cs" />
     <Compile Include="Global.asax.cs">

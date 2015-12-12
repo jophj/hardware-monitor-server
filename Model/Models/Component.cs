@@ -36,4 +36,12 @@ namespace HardwareMonitor.Model
             return translator.Translate(this);
         }
     }
+
+    public class GpuComponent : Component
+    {
+        public override TDest TranslateWith<TDest>(IComponentTranslator<TDest> translator)
+        {
+            return translator.Translate(this);
+        }
+    }
 }

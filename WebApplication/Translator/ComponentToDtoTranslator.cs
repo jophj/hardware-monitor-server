@@ -15,7 +15,8 @@ namespace WebApplication.Translator
             _componentTypes = new Dictionary<Type, ComponentType>()
             {
                 { typeof(CpuComponent), ComponentType.Cpu},
-                { typeof(MemoryComponent), ComponentType.Memory}
+                { typeof(MemoryComponent), ComponentType.Memory},
+                { typeof(GpuComponent), ComponentType.Gpu}
             };
         }
 
@@ -35,6 +36,11 @@ namespace WebApplication.Translator
         }
 
         public IComponentDto Translate(MemoryComponent component)
+        {
+            return DoTranslation(component);
+        }
+
+        public IComponentDto Translate(GpuComponent component)
         {
             return DoTranslation(component);
         }

@@ -4,6 +4,7 @@
     {
         TDest Translate(CpuComponent component);
         TDest Translate(MemoryComponent memoryComponent);
+        TDest Translate(GpuComponent gpuComponent);
     }
 
 

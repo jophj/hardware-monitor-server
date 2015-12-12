@@ -7,25 +7,12 @@ using WebApplication.Translator;
 
 namespace WebApplication.Controllers
 {
-    public class MemoryController: ApiController
+    public class MemoryController: AbstractApiController
     {
-        private static readonly IMonitor _memoryMonitor = new MemoryMonitor();
-        private static readonly IComponentTranslator<IComponentDto> _translator = new ComponentToDtoTranslator();
-
-        // GET: api/Memory
-        public IEnumerable<IComponentDto> Get()
+        public MemoryController()
         {
-            return _memoryMonitor
-                .GetComponents()
-                .Select(
-                    c => c.TranslateWith(_translator)
-                );
-        }
-
-        // GET: api/Memory/5
-        public IComponentDto Get(int id)
-        {
-            return _memoryMonitor.GetComponents().ElementAt(id).TranslateWith(_translator);
+            _monitor = DataConfiguration.MemoryMonitor;
+            _translator = DataConfiguration.ComponentTranslator;
         }
     }
 }

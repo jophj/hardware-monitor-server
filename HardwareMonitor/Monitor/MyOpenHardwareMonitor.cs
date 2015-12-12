@@ -48,4 +48,17 @@ namespace HardwareMonitor.Monitor
             return openHardwareMonitor.GetMemoryHardware();
         }
     }
+
+    public class GpuMonitor : MyOpenHardwareMonitor
+    {
+        internal override IComponent GetEmptyComponent()
+        {
+            return new GpuComponent();
+        }
+
+        internal override IEnumerable<IHardware> GetHardware(OpenHardwareMonitorService openHardwareMonitor)
+        {
+            return openHardwareMonitor.GetGpuHardware();
+        }
+    }
 }

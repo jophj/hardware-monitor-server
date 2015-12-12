@@ -58,5 +58,17 @@ namespace HardwareMonitor.Utils
 
             return hardware;
         }
+
+        internal IEnumerable<IHardware> GetGpuHardware()
+        {
+            IEnumerable<IHardware> hardware = _computer.Hardware
+                .Where(h =>
+                    h.HardwareType == HardwareType.GpuAti ||
+                    h.HardwareType == HardwareType.GpuNvidia
+                );
+            Update(hardware);
+
+            return hardware;
+        }
     }
 }
