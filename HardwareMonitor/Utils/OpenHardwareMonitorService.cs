@@ -70,5 +70,16 @@ namespace HardwareMonitor.Utils
 
             return hardware;
         }
+
+        internal IEnumerable<IHardware> GetStorageHardware()
+        {
+            IEnumerable<IHardware> hardware = _computer.Hardware
+                .Where(h =>
+                    h.HardwareType == HardwareType.HDD
+                );
+            Update(hardware);
+
+            return hardware;
+        }
     }
 }

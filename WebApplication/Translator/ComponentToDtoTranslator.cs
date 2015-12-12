@@ -16,7 +16,8 @@ namespace WebApplication.Translator
             {
                 { typeof(CpuComponent), ComponentType.Cpu},
                 { typeof(MemoryComponent), ComponentType.Memory},
-                { typeof(GpuComponent), ComponentType.Gpu}
+                { typeof(GpuComponent), ComponentType.Gpu},
+                { typeof(StorageComponent), ComponentType.Storage}
             };
         }
 
@@ -41,6 +42,11 @@ namespace WebApplication.Translator
         }
 
         public IComponentDto Translate(GpuComponent component)
+        {
+            return DoTranslation(component);
+        }
+
+        public IComponentDto Translate(StorageComponent component)
         {
             return DoTranslation(component);
         }

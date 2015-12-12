@@ -8,7 +8,8 @@ namespace WebApplication
     {
         Cpu,
         Memory,
-        Gpu
+        Gpu,
+        Storage
     }
 
     public enum SensorType
