@@ -13,5 +13,6 @@
         TDest Translate(ClockSensor clockSensor);
         TDest Translate(LoadSensor loadSensor);
         TDest Translate(PowerSensor powerSensor);
+        TDest Translate(DataSensor dataSensor);
     }
 }

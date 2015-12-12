@@ -16,7 +16,8 @@ namespace WebApplication.Translator
                 { typeof(TemperatureSensor), SensorType.Temperature },
                 { typeof(ClockSensor), SensorType.Clock },
                 { typeof(LoadSensor), SensorType.Load },
-                { typeof(PowerSensor), SensorType.Power }
+                { typeof(PowerSensor), SensorType.Power },
+                { typeof(DataSensor), SensorType.Data}
             };
         }
 
@@ -41,6 +42,11 @@ namespace WebApplication.Translator
         }
 
         public ISensorDto Translate(TemperatureSensor sensor)
+        {
+            return DoTranslation(sensor);
+        }
+
+        public ISensorDto Translate(DataSensor sensor)
         {
             return DoTranslation(sensor);
         }

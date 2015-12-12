@@ -15,7 +15,8 @@ namespace WebApplication
         Temperature,
         Clock,
         Load,
-        Power
+        Power,
+        Data
     }
 
     public interface IComponentDto
