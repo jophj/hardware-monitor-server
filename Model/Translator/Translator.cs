@@ -3,6 +3,7 @@
     public interface IComponentTranslator<TDest>
     {
         TDest Translate(CpuComponent component);
+        TDest Translate(MemoryComponent memoryComponent);
     }
 
 

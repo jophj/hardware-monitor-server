@@ -4,13 +4,15 @@ using System.Linq;
 
 namespace HardwareMonitor.Utils
 {
-    public interface IHardwareConverter
+    public class OpenHardwareMonitorHardwareConverter
     {
-        IComponent ConvertHardware(IHardware hardware);
-    }
+        private IComponent cpuComponent;
 
-    public class CpuConverter : IHardwareConverter
-    {
+        public OpenHardwareMonitorHardwareConverter(IComponent cpuComponent)
+        {
+            this.cpuComponent = cpuComponent;
+        }
+
         public IComponent ConvertHardware(IHardware hardware)
         {
             if (hardware == null)

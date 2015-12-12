@@ -35,7 +35,15 @@ namespace HardwareMonitor.Utils
             return _hardwareMonitor;
         }
 
-        public IEnumerable<IHardware> GetCpuHardware()
+        private void Update(IEnumerable<IHardware> hardware)
+        {
+            foreach (var h in hardware)
+            {
+                h.Update();
+            }
+        }
+
+        internal IEnumerable<IHardware> GetCpuHardware()
         {
             IEnumerable<IHardware> hardware = _computer.Hardware.Where(h => h.HardwareType == HardwareType.CPU);
             Update(hardware);
@@ -43,12 +51,12 @@ namespace HardwareMonitor.Utils
             return hardware;
         }
 
-        private void Update(IEnumerable<IHardware> hardware)
+        internal IEnumerable<IHardware> GetMemoryHardware()
         {
-            foreach (var h in hardware)
-            {
-                h.Update();
-            }
+            IEnumerable<IHardware> hardware = _computer.Hardware.Where(h => h.HardwareType == HardwareType.RAM);
+            Update(hardware);
+
+            return hardware;
         }
     }
 }

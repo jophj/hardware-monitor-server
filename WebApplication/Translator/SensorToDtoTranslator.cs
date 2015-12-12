@@ -7,11 +7,11 @@ namespace WebApplication.Translator
 {
     internal class SensorToDtoTranslator : ISensorTranslator<ISensorDto>
     {
-        private readonly Dictionary<Type, SensorType> _dtoStrategies;
+        private readonly Dictionary<Type, SensorType> _sensorTypes;
 
         public SensorToDtoTranslator()
         {
-            _dtoStrategies = new Dictionary<Type, SensorType>()
+            _sensorTypes = new Dictionary<Type, SensorType>()
             {
                 { typeof(TemperatureSensor), SensorType.Temperature },
                 { typeof(ClockSensor), SensorType.Clock },
@@ -22,7 +22,7 @@ namespace WebApplication.Translator
 
         private ISensorDto DoTranslation(ISensor sensor)
         {
-            return new SensorDto(sensor, _dtoStrategies[sensor.GetType()]);
+            return new SensorDto(sensor, _sensorTypes[sensor.GetType()]);
         }
 
         public ISensorDto Translate(PowerSensor sensor)

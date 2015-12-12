@@ -43,10 +43,15 @@ namespace WebApplication
         public IEnumerable<ISensorDto> Sensors { get; set; }
 
 
-        public ComponentDto(CpuComponent component)
+        public ComponentDto(IComponent component)
         {
             Id = component.Id;
             Name = component.Name;
+        }
+
+        public ComponentDto(IComponent component, ComponentType componentType): this(component)
+        {
+            ComponentType = componentType.ToString();
         }
     }
 
@@ -69,13 +74,8 @@ namespace WebApplication
             Min = sensor.Min;
         }
 
-        public SensorDto(ISensor sensor, SensorType sensorType)
+        public SensorDto(ISensor sensor, SensorType sensorType): this(sensor)
         {
-            Id = sensor.Id;
-            Name = sensor.Name;
-            Value = sensor.Value;
-            Max = sensor.Max;
-            Min = sensor.Min;
             SensorType = sensorType.ToString();
         }
     }

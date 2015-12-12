@@ -40,9 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\IBaseComponent.cs" />
-    <Compile Include="Models\IComponent.cs" />
-    <Compile Include="Models\ISensor.cs" />
+    <Compile Include="Models\Component.cs" />
+    <Compile Include="Models\Sensor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Translator\ITranslateable.cs" />
     <Compile Include="Translator\Translator.cs" />

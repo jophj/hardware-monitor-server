@@ -1,20 +1,41 @@
 ﻿using HardwareMonitor.Model;
 using HardwareMonitor.Model.Translator;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace WebApplication.Translator
 {
     public class ComponentToDtoTranslator : IComponentTranslator<IComponentDto>
     {
-        public IComponentDto Translate(CpuComponent component)
+        private readonly Dictionary<Type, ComponentType> _componentTypes;
+
+        public ComponentToDtoTranslator()
         {
-            ComponentDto dto = new ComponentDto(component);
-            dto.ComponentType = ComponentType.Cpu.ToString();
+            _componentTypes = new Dictionary<Type, ComponentType>()
+            {
+                { typeof(CpuComponent), ComponentType.Cpu}
+            };
+        }
+
+        private IComponentDto DoTranslation(IComponent component)
+        {
+            IComponentDto dto =  new ComponentDto(component, _componentTypes[component.GetType()]);
 
             ISensorTranslator<ISensorDto> sensorTranslator = new SensorToDtoTranslator();
             dto.Sensors = component.Sensors.Select(s => s.TranslateWith(sensorTranslator));
 
             return dto;
+        }
+
+        public IComponentDto Translate(CpuComponent component)
+        {
+            return DoTranslation(component);
+        }
+
+        public IComponentDto Translate(MemoryComponent component)
+        {
+            return DoTranslation(component);
         }
     }
 }
