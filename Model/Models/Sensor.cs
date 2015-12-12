@@ -13,6 +13,7 @@ namespace HardwareMonitor.Model
         double? Min { get; set; }
     }
 
+    // useful to avoid to write all the code implementing the auto properties
     public abstract class Sensor: ISensor
     {
         public string Id { get; set; }
