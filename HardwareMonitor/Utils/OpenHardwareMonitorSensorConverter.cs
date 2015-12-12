@@ -5,16 +5,11 @@ using System.Collections.Generic;
 
 namespace HardwareMonitor.Utils
 {
-    public interface ISensorConverter
-    {
-        Model.ISensor ConvertSensor(OpenHardwareMonitor.Hardware.ISensor sensor);
-    }
-
-    public class SensorConverter : ISensorConverter
+    public class OpenHardwareMonitorSensorConverter
     {
         private readonly Dictionary<SensorType, Model.ISensor> _sensorConverters;
 
-        public SensorConverter()
+        public OpenHardwareMonitorSensorConverter()
         {
             _sensorConverters = new Dictionary<SensorType, Model.ISensor>()
             {

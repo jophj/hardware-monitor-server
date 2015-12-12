@@ -6,29 +6,19 @@ namespace HardwareMonitor.Utils
 {
     public class OpenHardwareMonitorHardwareConverter
     {
-        private IComponent cpuComponent;
-
-        public OpenHardwareMonitorHardwareConverter(IComponent cpuComponent)
-        {
-            this.cpuComponent = cpuComponent;
-        }
-
-        public IComponent ConvertHardware(IHardware hardware)
+        public IComponent ConvertHardware(IHardware hardware, IComponent component)
         {
             if (hardware == null)
                 return null;
 
-            CpuComponent cpu = new CpuComponent()
-            {
-                Id = hardware.Identifier.ToString(),
-                Name = hardware.Name
-            };
+            component.Id = hardware.Identifier.ToString();
+            component.Name = hardware.Name;
 
-            cpu.Sensors = hardware.Sensors
-                .Select(new SensorConverter().ConvertSensor)
+            component.Sensors = hardware.Sensors
+                .Select(new OpenHardwareMonitorSensorConverter().ConvertSensor)
                 .Where(s => s != null);
 
-            return cpu;
+            return component;
         }
     }
 }

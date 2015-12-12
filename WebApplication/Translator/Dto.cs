@@ -6,7 +6,8 @@ namespace WebApplication
 {
     public enum ComponentType
     {
-        Cpu
+        Cpu,
+        Memory
     }
 
     public enum SensorType

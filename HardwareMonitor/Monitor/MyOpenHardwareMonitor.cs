@@ -1,11 +1,8 @@
 ﻿using HardwareMonitor.Model;
 using HardwareMonitor.Utils;
 using OpenHardwareMonitor.Hardware;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HardwareMonitor.Monitor
 {
@@ -16,19 +13,19 @@ namespace HardwareMonitor.Monitor
             OpenHardwareMonitorService openHardwareMonitor = OpenHardwareMonitorService.GetInstance();
             IEnumerable<IHardware> hardware = GetHardware(openHardwareMonitor);
 
-            OpenHardwareMonitorHardwareConverter converter = new OpenHardwareMonitorHardwareConverter(GetComponent());
+            OpenHardwareMonitorHardwareConverter converter = new OpenHardwareMonitorHardwareConverter();
 
-            return hardware.Select(converter.ConvertHardware);
+            return hardware.Select(h => converter.ConvertHardware(h, GetEmptyComponent()));
         }
 
-        internal abstract IComponent GetComponent();
+        internal abstract IComponent GetEmptyComponent();
         internal abstract IEnumerable<IHardware> GetHardware(OpenHardwareMonitorService openHardwareMonitor);
     }
 
 
     public class CpuMonitor : MyOpenHardwareMonitor
     {
-        internal override IComponent GetComponent()
+        internal override IComponent GetEmptyComponent()
         {
             return new CpuComponent();
         }
@@ -41,7 +38,7 @@ namespace HardwareMonitor.Monitor
 
     public class MemoryMonitor : MyOpenHardwareMonitor
     {
-        internal override IComponent GetComponent()
+        internal override IComponent GetEmptyComponent()
         {
             return new MemoryComponent();
         }
