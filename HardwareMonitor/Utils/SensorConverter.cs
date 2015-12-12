@@ -19,7 +19,8 @@ namespace HardwareMonitor.Utils
             _sensorConverters = new Dictionary<SensorType, Model.ISensor>()
             {
                 { SensorType.Temperature, new TemperatureSensor() },
-                { SensorType.Clock, new ClockSensor() }
+                { SensorType.Clock, new ClockSensor() },
+                { SensorType.Load, new LoadSensor() }
 
             };
         }

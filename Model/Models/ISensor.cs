@@ -39,4 +39,12 @@ namespace HardwareMonitor.Model
             return translator.Translate(this);
         }
     }
+
+    public class LoadSensor : Sensor
+    {
+        public override TDest TranslateWith<TDest>(ISensorTranslator<TDest> translator)
+        {
+            return translator.Translate(this);
+        }
+    }
 }

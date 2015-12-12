@@ -14,18 +14,29 @@ namespace WebApplication.Translator
             _dtoStrategies = new Dictionary<Type, SensorType>()
             {
                 { typeof(TemperatureSensor), SensorType.Temperature },
-                { typeof(ClockSensor), SensorType.Clock }
+                { typeof(ClockSensor), SensorType.Clock },
+                { typeof(LoadSensor), SensorType.Load }
             };
+        }
+
+        private ISensorDto DoTranslation(ISensor sensor)
+        {
+            return new SensorDto(sensor, _dtoStrategies[sensor.GetType()]);
+        }
+
+        public ISensorDto Translate(LoadSensor sensor)
+        {
+            return DoTranslation(sensor);
         }
 
         public ISensorDto Translate(ClockSensor sensor)
         {
-            return new SensorDto(sensor, _dtoStrategies[sensor.GetType()]);
+            return DoTranslation(sensor);
         }
 
         public ISensorDto Translate(TemperatureSensor sensor)
         {
-            return new SensorDto(sensor, _dtoStrategies[sensor.GetType()]);
+            return DoTranslation(sensor);
         }
     }
 }
