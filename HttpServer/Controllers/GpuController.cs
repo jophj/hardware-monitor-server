@@ -1,4 +1,4 @@
-﻿namespace WebApplication.Controllers
+﻿namespace HardwareMonitor.HttpServer.Controllers
 {
     public class GpuController : AbstractApiController
     {

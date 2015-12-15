@@ -1,11 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Web.Http;
-using System.Linq;
-using HardwareMonitor.Model.Translator;
-using HardwareMonitor.Monitor;
-using WebApplication.Translator;
-
-namespace WebApplication.Controllers
+﻿namespace HardwareMonitor.HttpServer.Controllers
 {
     public class CpuController : AbstractApiController
     {

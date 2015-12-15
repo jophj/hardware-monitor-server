@@ -1,11 +1,4 @@
-﻿using HardwareMonitor.Model.Translator;
-using HardwareMonitor.Monitor;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
-using WebApplication.Translator;
-
-namespace WebApplication.Controllers
+﻿namespace HardwareMonitor.HttpServer.Controllers
 {
     public class MemoryController: AbstractApiController
     {

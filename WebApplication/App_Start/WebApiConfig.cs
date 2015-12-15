@@ -21,14 +21,4 @@ namespace WebApplication
             );
         }
     }
-
-    public static class DataConfiguration
-    {
-        public static IMonitor MemoryMonitor = new MemoryMonitor();
-        public static IMonitor CpuMonitor = new CpuMonitor();
-        public static IMonitor GpuMonitor = new GpuMonitor();
-        public static IMonitor StorageMonitor = new StorageMonitor();
-
-        public static IComponentTranslator<IComponentDto> ComponentTranslator = new ComponentToDtoTranslator();
-    }
 }

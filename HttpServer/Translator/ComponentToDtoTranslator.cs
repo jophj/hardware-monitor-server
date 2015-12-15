@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WebApplication.Translator
+namespace HardwareMonitor.HttpServer.Translator
 {
     public class ComponentToDtoTranslator : IComponentTranslator<IComponentDto>
     {

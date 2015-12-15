@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System;
 
-namespace WebApplication
+namespace HardwareMonitor.HttpServer
 {
     public enum ComponentType
     {

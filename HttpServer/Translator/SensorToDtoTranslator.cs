@@ -3,7 +3,7 @@ using HardwareMonitor.Model;
 using HardwareMonitor.Model.Translator;
 using System.Collections.Generic;
 
-namespace WebApplication.Translator
+namespace HardwareMonitor.HttpServer.Translator
 {
     internal class SensorToDtoTranslator : ISensorTranslator<ISensorDto>
     {

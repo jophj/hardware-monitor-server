@@ -2,10 +2,14 @@
 using HardwareMonitor.Monitor;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web.Http;
 
-namespace WebApplication.Controllers
+namespace HardwareMonitor.HttpServer.Controllers
 {
+
+    public abstract class ApiController
+    {
+    }
+
     public abstract class AbstractApiController : ApiController
     {
         protected static IMonitor _monitor;

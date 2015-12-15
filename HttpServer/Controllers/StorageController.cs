@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Web.Http;
-
-namespace WebApplication.Controllers
+﻿namespace HardwareMonitor.HttpServer.Controllers
 {
     public class StorageController : AbstractApiController
     {
