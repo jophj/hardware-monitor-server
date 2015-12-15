@@ -6,11 +6,13 @@ using System.Linq;
 namespace HardwareMonitor.HttpServer.Controllers
 {
 
-    public abstract class ApiController
+    public interface IApiController
     {
+        IEnumerable<IComponentDto> Get();
+        IComponentDto Get(int id);
     }
 
-    public abstract class AbstractApiController : ApiController
+    public abstract class AbstractApiController : IApiController
     {
         protected static IMonitor _monitor;
         protected static IComponentTranslator<IComponentDto> _translator;
