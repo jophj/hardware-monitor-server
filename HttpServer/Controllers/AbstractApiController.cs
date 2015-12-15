@@ -30,7 +30,10 @@ namespace HardwareMonitor.HttpServer.Controllers
         // GET: api/{controller}/5
         public IComponentDto Get(int id)
         {
-            return _monitor.GetComponents().ElementAt(id).TranslateWith(_translator);
+            return _monitor
+                .GetComponents()
+                .ElementAt(id)
+                .TranslateWith(_translator);
         }
     }
 }
