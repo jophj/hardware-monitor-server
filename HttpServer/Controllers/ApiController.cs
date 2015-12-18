@@ -12,10 +12,16 @@ namespace HardwareMonitor.HttpServer.Controllers
         IComponentDto Get(int id);
     }
 
-    public abstract class AbstractApiController : IApiController
+    public abstract class ApiController : IApiController
     {
-        protected static IMonitor _monitor;
-        protected static IComponentTranslator<IComponentDto> _translator;
+        private readonly IMonitor _monitor;
+        private readonly IComponentTranslator<IComponentDto> _translator;
+
+        protected ApiController(IMonitor monitor, IComponentTranslator<IComponentDto> translator)
+        {
+            _monitor = monitor;
+            _translator = translator;
+        }
 
         // GET: api/{controller}
         public IEnumerable<IComponentDto> Get()

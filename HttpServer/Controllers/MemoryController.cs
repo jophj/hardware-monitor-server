@@ -1,11 +1,12 @@
-﻿namespace HardwareMonitor.HttpServer.Controllers
+﻿using HardwareMonitor.Model.Translator;
+using HardwareMonitor.Monitor;
+
+namespace HardwareMonitor.HttpServer.Controllers
 {
-    public class MemoryController: AbstractApiController
+    public class MemoryController: ApiController
     {
-        public MemoryController()
+        public MemoryController(IMonitor monitor, IComponentTranslator<IComponentDto> translator) : base(monitor, translator)
         {
-            _monitor = DataConfiguration.MemoryMonitor;
-            _translator = DataConfiguration.ComponentTranslator;
         }
     }
 }

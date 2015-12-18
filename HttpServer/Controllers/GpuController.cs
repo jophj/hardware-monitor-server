@@ -1,11 +1,12 @@
-﻿namespace HardwareMonitor.HttpServer.Controllers
+﻿using HardwareMonitor.Model.Translator;
+using HardwareMonitor.Monitor;
+
+namespace HardwareMonitor.HttpServer.Controllers
 {
-    public class GpuController : AbstractApiController
+    public class GpuController : ApiController
     {
-        public GpuController()
+        public GpuController(IMonitor monitor, IComponentTranslator<IComponentDto> translator) : base(monitor, translator)
         {
-            _monitor = DataConfiguration.GpuMonitor;
-            _translator = DataConfiguration.ComponentTranslator;
         }
     }
 }
