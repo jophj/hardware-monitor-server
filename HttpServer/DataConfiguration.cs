@@ -34,7 +34,6 @@ namespace HttpServer
             server.Module<WebApiModule>().RegisterController<StorageController>();
 
             Task task = server.RunAsync();
-            Console.ReadKey(true);
             try
             {
                 task.Wait();
