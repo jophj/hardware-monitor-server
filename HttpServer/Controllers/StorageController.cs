@@ -1,12 +1,34 @@
-﻿using HardwareMonitor.Model.Translator;
+﻿using System.Linq;
+using System.Net;
+using HardwareMonitor.HttpServer;
+using HardwareMonitor.Model.Translator;
 using HardwareMonitor.Monitor;
+using Unosquare.Labs.EmbedIO;
+using Unosquare.Labs.EmbedIO.Modules;
 
-namespace HardwareMonitor.HttpServer.Controllers
+namespace HttpServer.Controllers
 {
-    public class StorageController : ApiController
+    public class StorageController : WebApiController
     {
-        public StorageController(IMonitor monitor, IComponentTranslator<IComponentDto> translator) : base(monitor, translator)
+        private readonly IMonitor _monitor;
+        private readonly IComponentTranslator<IComponentDto> _translator;
+
+        public StorageController()
         {
+            _monitor = DataConfiguration.GpuMonitor;
+            _translator = DataConfiguration.ComponentTranslator;
+        }
+
+        [WebApiHandler(HttpVerbs.Get, "/api/storage")]
+        public bool Get(WebServer server, HttpListenerContext context)
+        {
+            var responseData = _monitor
+                .GetComponents()
+                .Select(
+                    c => c.TranslateWith(_translator)
+                );
+
+            return context.JsonResponse(responseData);
         }
     }
 }

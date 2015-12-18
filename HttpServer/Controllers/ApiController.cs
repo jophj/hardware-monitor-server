@@ -1,9 +1,10 @@
-﻿using HardwareMonitor.Model.Translator;
-using HardwareMonitor.Monitor;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using HardwareMonitor.HttpServer;
+using HardwareMonitor.Model.Translator;
+using HardwareMonitor.Monitor;
 
-namespace HardwareMonitor.HttpServer.Controllers
+namespace HttpServer.Controllers
 {
 
     public interface IApiController

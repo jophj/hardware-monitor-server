@@ -1,12 +1,12 @@
 ﻿using System.Linq;
 using System.Net;
+using HardwareMonitor.HttpServer;
 using HardwareMonitor.Model.Translator;
 using HardwareMonitor.Monitor;
-using HttpServer;
 using Unosquare.Labs.EmbedIO;
 using Unosquare.Labs.EmbedIO.Modules;
 
-namespace HardwareMonitor.HttpServer.Controllers
+namespace HttpServer.Controllers
 {
     public class CpuController : WebApiController
     {
@@ -20,7 +20,7 @@ namespace HardwareMonitor.HttpServer.Controllers
         }
 
         [WebApiHandler(HttpVerbs.Get, "/api/cpu")]
-        public bool GetPeople(WebServer server, HttpListenerContext context)
+        public bool Get(WebServer server, HttpListenerContext context)
         {
             var responseData = _monitor
                 .GetComponents()
