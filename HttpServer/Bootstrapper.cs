@@ -4,12 +4,15 @@ using HardwareMonitor.HttpServer;
 using HardwareMonitor.HttpServer.Translator;
 using HardwareMonitor.Model.Translator;
 using HardwareMonitor.Monitor;
+using Nancy;
+using Nancy.Bootstrapper;
 using Nancy.Hosting.Self;
+using Nancy.TinyIoc;
 using static System.Configuration.ConfigurationSettings;
 
 namespace HttpServer
 {
-    public class Bootstrapper
+    public class Bootstrapper: DefaultNancyBootstrapper
     {
         public static IMonitor MemoryMonitor = new MemoryMonitor();
         public static IMonitor CpuMonitor = new CpuMonitor();
@@ -35,6 +38,16 @@ namespace HttpServer
                 while(true)
                     Thread.Sleep(1024);
             }
+        }
+
+        protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
+        {
+            pipelines.AfterRequest.AddItemToEndOfPipeline((ctx) =>
+            {
+                ctx.Response.WithHeader("Access-Control-Allow-Origin", "*")
+                    .WithHeader("Access-Control-Allow-Methods", "POST,GET")
+                    .WithHeader("Access-Control-Allow-Headers", "Accept, Origin, Content-type");
+            });
         }
     }
 }
