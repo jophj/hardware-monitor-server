@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading;
 using HttpServer;
+using Nancy.Hosting.Self;
 
 namespace HardwareMonitorApplication
 {
@@ -10,11 +12,6 @@ namespace HardwareMonitorApplication
         static void Main()
         {
             new Bootstrapper().StartWebServer();
-
-            while (true)
-            {
-                Thread.Sleep(1024);
-            }
         }
     }
 }

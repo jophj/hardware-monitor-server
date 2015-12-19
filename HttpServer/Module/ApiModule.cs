@@ -3,29 +3,27 @@ using System.Linq;
 using HardwareMonitor.HttpServer;
 using HardwareMonitor.Model.Translator;
 using HardwareMonitor.Monitor;
+using Nancy;
 
-namespace HttpServer.Controllers
+namespace HttpServer.Module
 {
-
-    public interface IApiController
-    {
-        IEnumerable<IComponentDto> Get();
-        IComponentDto Get(int id);
-    }
-
-    public abstract class ApiController : IApiController
+    public abstract class ApiModule : NancyModule
     {
         private readonly IMonitor _monitor;
         private readonly IComponentTranslator<IComponentDto> _translator;
 
-        protected ApiController(IMonitor monitor, IComponentTranslator<IComponentDto> translator)
+        protected ApiModule(IMonitor monitor, IComponentTranslator<IComponentDto> translator)
         {
             _monitor = monitor;
             _translator = translator;
         }
 
-        // GET: api/{controller}
-        public IEnumerable<IComponentDto> Get()
+        public Response GetResponse()
+        {
+            return Response.AsJson(GetData());
+        }
+
+        private IEnumerable<IComponentDto> GetData()
         {
             return _monitor
                 .GetComponents()
@@ -34,8 +32,7 @@ namespace HttpServer.Controllers
                 );
         }
 
-        // GET: api/{controller}/5
-        public IComponentDto Get(int id)
+        private IComponentDto GetData(int id)
         {
             return _monitor
                 .GetComponents()
