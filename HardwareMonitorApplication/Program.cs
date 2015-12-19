@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using HttpServer;
 
 namespace HardwareMonitorApplication
@@ -8,7 +9,12 @@ namespace HardwareMonitorApplication
         [STAThread]
         static void Main()
         {
-            new DataConfiguration().ConfigureWebServer();
+            new Bootstrapper().StartWebServer();
+
+            while (true)
+            {
+                Thread.Sleep(1024);
+            }
         }
     }
 }

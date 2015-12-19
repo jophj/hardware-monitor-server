@@ -15,8 +15,8 @@ namespace HttpServer.Controllers
 
         public CpuController()
         {
-            _monitor = DataConfiguration.CpuMonitor;
-            _translator = DataConfiguration.ComponentTranslator;
+            _monitor = Bootstrapper.CpuMonitor;
+            _translator = Bootstrapper.ComponentTranslator;
         }
 
         [WebApiHandler(HttpVerbs.Get, "/api/cpu")]

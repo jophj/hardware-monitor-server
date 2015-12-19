@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpServer", "HttpServer\Ht
 		{EDB964A3-62A8-42FC-BF16-86DFC1B0F8C3} = {EDB964A3-62A8-42FC-BF16-86DFC1B0F8C3}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HardwareMonitorApplication", "HardwareMonitorApplication\HardwareMonitorApplication.csproj", "{DB09BDA9-EFD7-483D-98C1-3946DB322642}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{598EB8A4-ADC9-4D7B-91E8-7A9345B30C50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{598EB8A4-ADC9-4D7B-91E8-7A9345B30C50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{598EB8A4-ADC9-4D7B-91E8-7A9345B30C50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB09BDA9-EFD7-483D-98C1-3946DB322642}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB09BDA9-EFD7-483D-98C1-3946DB322642}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB09BDA9-EFD7-483D-98C1-3946DB322642}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB09BDA9-EFD7-483D-98C1-3946DB322642}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

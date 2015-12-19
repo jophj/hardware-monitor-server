@@ -15,8 +15,8 @@ namespace HttpServer.Controllers
 
         public StorageController()
         {
-            _monitor = DataConfiguration.GpuMonitor;
-            _translator = DataConfiguration.ComponentTranslator;
+            _monitor = Bootstrapper.GpuMonitor;
+            _translator = Bootstrapper.ComponentTranslator;
         }
 
         [WebApiHandler(HttpVerbs.Get, "/api/storage")]

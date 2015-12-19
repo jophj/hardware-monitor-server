@@ -15,8 +15,8 @@ namespace HttpServer.Controllers
 
         public MemoryController()
         {
-            _monitor = DataConfiguration.GpuMonitor;
-            _translator = DataConfiguration.ComponentTranslator;
+            _monitor = Bootstrapper.GpuMonitor;
+            _translator = Bootstrapper.ComponentTranslator;
         }
 
         [WebApiHandler(HttpVerbs.Get, "/api/memory")]
