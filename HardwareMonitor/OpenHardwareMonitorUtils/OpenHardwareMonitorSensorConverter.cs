@@ -1,9 +1,8 @@
-﻿using HardwareMonitor.Model;
+﻿using System.Collections.Generic;
+using HardwareMonitor.Model;
 using OpenHardwareMonitor.Hardware;
-using System;
-using System.Collections.Generic;
 
-namespace HardwareMonitor.Utils
+namespace HardwareMonitor.OpenHardwareMonitorUtils
 {
     public class OpenHardwareMonitorSensorConverter
     {

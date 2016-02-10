@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using System.Net.NetworkInformation;
 using HardwareMonitor.Model;
+using HardwareMonitor.NetworkUtils;
 
 namespace HardwareMonitor.Monitor
 {
@@ -7,7 +10,11 @@ namespace HardwareMonitor.Monitor
     {
         public IEnumerable<IComponent> GetComponents()
         {
-            return new NetworkComponent();
+            NetworkInterfaceConverter converter = new NetworkInterfaceConverter();
+            var netComponents = NetworkInterface.GetAllNetworkInterfaces()
+                .Select(converter.ConvertNetworkInterface);
+
+            return netComponents;
         }
     }
 }

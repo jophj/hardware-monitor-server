@@ -1,6 +1,5 @@
 ﻿using HardwareMonitor.Model;
 using System.Collections.Generic;
-using System;
 
 namespace HardwareMonitor.HttpServer
 {
@@ -9,7 +8,8 @@ namespace HardwareMonitor.HttpServer
         Cpu,
         Memory,
         Gpu,
-        Storage
+        Storage,
+        Network
     }
 
     public enum SensorType
@@ -18,7 +18,8 @@ namespace HardwareMonitor.HttpServer
         Clock,
         Load,
         Power,
-        Data
+        Data,
+        Throughput
     }
 
     public interface IComponentDto

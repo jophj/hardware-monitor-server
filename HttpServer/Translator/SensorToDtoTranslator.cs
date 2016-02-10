@@ -17,7 +17,8 @@ namespace HardwareMonitor.HttpServer.Translator
                 { typeof(ClockSensor), SensorType.Clock },
                 { typeof(LoadSensor), SensorType.Load },
                 { typeof(PowerSensor), SensorType.Power },
-                { typeof(DataSensor), SensorType.Data}
+                { typeof(DataSensor), SensorType.Data},
+                { typeof(ThroughputSensor), SensorType.Throughput}
             };
         }
 
@@ -47,6 +48,11 @@ namespace HardwareMonitor.HttpServer.Translator
         }
 
         public ISensorDto Translate(DataSensor sensor)
+        {
+            return DoTranslation(sensor);
+        }
+
+        public ISensorDto Translate(ThroughputSensor sensor)
         {
             return DoTranslation(sensor);
         }

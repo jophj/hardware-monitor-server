@@ -1,5 +1,5 @@
 ﻿using HardwareMonitor.Model;
-using HardwareMonitor.Utils;
+using HardwareMonitor.OpenHardwareMonitorUtils;
 using OpenHardwareMonitor.Hardware;
 using System.Collections.Generic;
 using System.Linq;

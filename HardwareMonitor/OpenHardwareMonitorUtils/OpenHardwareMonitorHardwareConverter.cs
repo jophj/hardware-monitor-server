@@ -1,8 +1,8 @@
-﻿using HardwareMonitor.Model;
+﻿using System.Linq;
+using HardwareMonitor.Model;
 using OpenHardwareMonitor.Hardware;
-using System.Linq;
 
-namespace HardwareMonitor.Utils
+namespace HardwareMonitor.OpenHardwareMonitorUtils
 {
     public class OpenHardwareMonitorHardwareConverter
     {
