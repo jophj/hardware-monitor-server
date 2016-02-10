@@ -3,6 +3,11 @@ using HardwareMonitor.Model;
 
 namespace HardwareMonitor.NetworkUtils
 {
+    public class NetworkMonitorService
+    {
+        
+    }
+
     public class NetworkInterfaceConverter
     {
         public IComponent ConvertNetworkInterface(NetworkInterface networkInterface)

@@ -42,19 +42,7 @@ namespace HttpServer
                 host.Start();
                 while (true)
                 {
-                    foreach (NetworkInterface netInterface in NetworkInterface.GetAllNetworkInterfaces())
-                    {
-                        DateTime startTime = DateTime.Now;
-                        long count = netInterface.GetIPStatistics().BytesReceived;
-                        Thread.Sleep(512);
-                        count = netInterface.GetIPStatistics().BytesReceived - count;
-
-                        TimeSpan timespan = DateTime.Now - startTime;
-                        Console.Write(netInterface.Name + " " + netInterface.Description + " " + netInterface.NetworkInterfaceType.ToString());
-                        Console.Write((double)count / (1024) / timespan.TotalSeconds + " ");
-                        Console.Write(timespan.TotalSeconds);
-                        Console.WriteLine();
-                    }
+                    Thread.Sleep(1024);
                 }
             }
         }
