@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Linq;
+using System.Net.NetworkInformation;
 using System.Threading;
 using HardwareMonitor.HttpServer;
 using HardwareMonitor.HttpServer.Translator;
@@ -18,7 +21,9 @@ namespace HttpServer
         public static IMonitor CpuMonitor = new CpuMonitor();
         public static IMonitor GpuMonitor = new GpuMonitor();
         public static IMonitor StorageMonitor = new StorageMonitor();
+        public static IMonitor NetworkMonitor = new NetworkMonitor();
         public static IComponentTranslator<IComponentDto> ComponentTranslator = new ComponentToDtoTranslator();
+
 
         public int WebServerPort = 6620;
 
@@ -35,8 +40,22 @@ namespace HttpServer
             using (var host = new NancyHost(new Uri(uri)))
             {
                 host.Start();
-                while(true)
-                    Thread.Sleep(1024);
+                while (true)
+                {
+                    foreach (NetworkInterface netInterface in NetworkInterface.GetAllNetworkInterfaces())
+                    {
+                        DateTime startTime = DateTime.Now;
+                        long count = netInterface.GetIPStatistics().BytesReceived;
+                        Thread.Sleep(512);
+                        count = netInterface.GetIPStatistics().BytesReceived - count;
+
+                        TimeSpan timespan = DateTime.Now - startTime;
+                        Console.Write(netInterface.Name + " " + netInterface.Description + " " + netInterface.NetworkInterfaceType.ToString());
+                        Console.Write((double)count / (1024) / timespan.TotalSeconds + " ");
+                        Console.Write(timespan.TotalSeconds);
+                        Console.WriteLine();
+                    }
+                }
             }
         }
 

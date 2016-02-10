@@ -6,6 +6,7 @@
         TDest Translate(MemoryComponent memoryComponent);
         TDest Translate(GpuComponent gpuComponent);
         TDest Translate(StorageComponent storageComponent);
+        TDest Translate(NetworkComponent networkComponent);
     }
 
 
@@ -16,5 +17,6 @@
         TDest Translate(LoadSensor loadSensor);
         TDest Translate(PowerSensor powerSensor);
         TDest Translate(DataSensor dataSensor);
+        TDest Translate(ThroughputSensor throughputSensor);
     }
 }

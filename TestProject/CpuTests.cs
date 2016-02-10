@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using HardwareMonitor.Monitor;
 using HardwareMonitor.Model;

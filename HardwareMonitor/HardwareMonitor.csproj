@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Monitor\Monitor.cs" />
     <Compile Include="Monitor\MyOpenHardwareMonitor.cs" />
+    <Compile Include="Monitor\NetworkMonitor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Utils\OpenHardwareMonitorHardwareConverter.cs" />
     <Compile Include="Utils\OpenHardwareMonitorService.cs" />
