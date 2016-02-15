@@ -31,13 +31,5 @@ namespace HttpServer.Module
                     c => c.TranslateWith(_translator)
                 );
         }
-
-        private IComponentDto GetData(int id)
-        {
-            return _monitor
-                .GetComponents()
-                .ElementAt(id)
-                .TranslateWith(_translator);
-        }
     }
 }

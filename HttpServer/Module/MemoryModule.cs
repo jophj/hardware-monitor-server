@@ -1,18 +1,15 @@
-﻿namespace HttpServer.Module
-{
-    public class NetworkModule : ApiModule
-    {
-        public NetworkModule() : base(Bootstrapper.NetworkMonitor, Bootstrapper.ComponentTranslator)
-        {
-            Get["/api/network"] = _ => GetResponse();
-        }
-    }
+﻿using HardwareMonitor.HttpServer;
+using HardwareMonitor.Model.Translator;
+using HardwareMonitor.Monitor;
 
+namespace HttpServer.Module
+{
     public class MemoryModule : ApiModule
     {
-        public MemoryModule() : base(Bootstrapper.MemoryMonitor, Bootstrapper.ComponentTranslator)
+        public MemoryModule(MemoryMonitor monitor) : base(monitor, Bootstrapper.Translator)
         {
             Get["/api/memory"] = _ => GetResponse();
+
         }
     }
 }

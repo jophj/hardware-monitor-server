@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Linq;
-using System.Net.NetworkInformation;
 using System.Threading;
 using HardwareMonitor.HttpServer;
 using HardwareMonitor.HttpServer.Translator;
@@ -12,26 +9,20 @@ using Nancy.Bootstrapper;
 using Nancy.Hosting.Self;
 using Nancy.TinyIoc;
 using static System.Configuration.ConfigurationSettings;
+using static System.String;
 
 namespace HttpServer
 {
     public class Bootstrapper: DefaultNancyBootstrapper
     {
-        public static IMonitor MemoryMonitor = new MemoryMonitor();
-        public static IMonitor CpuMonitor = new CpuMonitor();
-        public static IMonitor GpuMonitor = new GpuMonitor();
-        public static IMonitor StorageMonitor = new StorageMonitor();
-        public static IMonitor NetworkMonitor = new NetworkMonitor();
-        public static IComponentTranslator<IComponentDto> ComponentTranslator = new ComponentToDtoTranslator();
-
-
+        public static IComponentTranslator<IComponentDto> Translator = new ComponentToDtoTranslator();
         public int WebServerPort = 6620;
 
         public Bootstrapper()
         {
             string webServerPortConfiguration = AppSettings["port"];
-            if (!String.IsNullOrEmpty(webServerPortConfiguration))
-                WebServerPort = Int32.Parse(webServerPortConfiguration);
+            if (!IsNullOrEmpty(webServerPortConfiguration))
+                WebServerPort = int.Parse(webServerPortConfiguration);
         }
 
         public void StartWebServer()
@@ -54,6 +45,13 @@ namespace HttpServer
                 ctx.Response.WithHeader("Access-Control-Allow-Origin", "*")
                     .WithHeader("Access-Control-Allow-Methods", "POST,GET")
                     .WithHeader("Access-Control-Allow-Headers", "Accept, Origin, Content-type");
+
+                container.Register<CpuMonitor, CpuMonitor>();
+                container.Register<GpuMonitor, GpuMonitor>();
+                container.Register<MemoryMonitor, MemoryMonitor>();
+                container.Register<NetworkMonitor, NetworkMonitor>();
+                container.Register<StorageMonitor, StorageMonitor>();
+                container.Register<IComponentTranslator<IComponentDto>, ComponentToDtoTranslator>().AsSingleton();
             });
         }
     }

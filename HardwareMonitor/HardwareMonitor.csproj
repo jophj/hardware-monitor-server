@@ -54,7 +54,6 @@
     <Compile Include="OpenHardwareMonitorUtils\OpenHardwareMonitorHardwareConverter.cs" />
     <Compile Include="OpenHardwareMonitorUtils\OpenHardwareMonitorSensorConverter.cs" />
     <Compile Include="OpenHardwareMonitorUtils\OpenHardwareMonitorService.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
