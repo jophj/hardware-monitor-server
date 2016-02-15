@@ -4,6 +4,7 @@ using HardwareMonitor.HttpServer;
 using HardwareMonitor.HttpServer.Translator;
 using HardwareMonitor.Model.Translator;
 using HardwareMonitor.Monitor;
+using HardwareMonitor.NetworkUtils;
 using Nancy;
 using Nancy.Bootstrapper;
 using Nancy.Hosting.Self;
@@ -51,7 +52,10 @@ namespace HttpServer
                 container.Register<MemoryMonitor, MemoryMonitor>();
                 container.Register<NetworkMonitor, NetworkMonitor>();
                 container.Register<StorageMonitor, StorageMonitor>();
+
                 container.Register<IComponentTranslator<IComponentDto>, ComponentToDtoTranslator>().AsSingleton();
+
+                container.Register<NetworkInterfaceConverter, NetworkInterfaceConverter>();
             });
         }
     }

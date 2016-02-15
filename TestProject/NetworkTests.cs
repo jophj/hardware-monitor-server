@@ -8,26 +8,30 @@ namespace TestProject
     [TestClass]
     public class NetworkComponentTests
     {
+        private readonly NetworkMonitor _networkMonitor;
+
+        public NetworkComponentTests(NetworkMonitor networkMonitor)
+        {
+            _networkMonitor = networkMonitor;
+        }
+
         [TestMethod]
         public void Network_Has_Name()
         {
-            IMonitor networkMonitor = new NetworkMonitor();
             // Yeah, I know, your's different
-            Assert.IsTrue(networkMonitor.GetComponents().Any(x => x.Name.StartsWith("Intel")));
+            Assert.IsTrue(_networkMonitor.GetComponents().Any(x => x.Name.StartsWith("Intel")));
         }
 
         [TestMethod]
         public void Network_Has_Throughput_Sensor()
         {
-            IMonitor networkMonitor = new NetworkMonitor();
-            Assert.IsTrue(networkMonitor.GetComponents().First().Sensors.OfType<ThroughputSensor>().Any());
+            Assert.IsTrue(_networkMonitor.GetComponents().First().Sensors.OfType<ThroughputSensor>().Any());
         }
 
         [TestMethod]
         public void Network_Has_Throughput()
         {
-            IMonitor networkMonitor = new NetworkMonitor();
-            var throughputSensors = networkMonitor.GetComponents().First().Sensors.OfType<ThroughputSensor>();
+            var throughputSensors = _networkMonitor.GetComponents().First().Sensors.OfType<ThroughputSensor>();
 
             Assert.IsTrue(throughputSensors.All(t => t.Value.HasValue));
         }

@@ -8,30 +8,31 @@ namespace HardwareMonitor.OpenHardwareMonitorUtils
     public class OpenHardwareMonitorService
     {
         private static OpenHardwareMonitorService _hardwareMonitor;
-        private Computer _computer;
+        private readonly Computer _computer;
 
         private OpenHardwareMonitorService() {
-            _computer = new Computer();
-            _computer.CPUEnabled = true;
-            _computer.GPUEnabled = true;
-            _computer.RAMEnabled = true;
-            _computer.HDDEnabled = true;
-            _computer.MainboardEnabled = true;
-            _computer.FanControllerEnabled = true;
+            _computer = new Computer
+            {
+                CPUEnabled = true,
+                GPUEnabled = true,
+                RAMEnabled = true,
+                HDDEnabled = true,
+                MainboardEnabled = true,
+                FanControllerEnabled = true
+            };
 
             try {
                 _computer.Open();
             }
-            catch (Exception) { }
-            
+            catch (Exception)
+            {
+                // ignored
+            }
         }
 
         public static OpenHardwareMonitorService GetInstance()
         {
-            if (_hardwareMonitor == null)
-                _hardwareMonitor = new OpenHardwareMonitorService();
-
-            return _hardwareMonitor;
+            return _hardwareMonitor ?? (_hardwareMonitor = new OpenHardwareMonitorService());
         }
 
         private void Update(IEnumerable<IHardware> hardware)
@@ -46,7 +47,6 @@ namespace HardwareMonitor.OpenHardwareMonitorUtils
         {
             IEnumerable<IHardware> hardware = _computer.Hardware.Where(h => h.HardwareType == HardwareType.CPU);
             Update(hardware);
-
             return hardware;
         }
 
@@ -54,7 +54,6 @@ namespace HardwareMonitor.OpenHardwareMonitorUtils
         {
             IEnumerable<IHardware> hardware = _computer.Hardware.Where(h => h.HardwareType == HardwareType.RAM);
             Update(hardware);
-
             return hardware;
         }
 
@@ -66,7 +65,6 @@ namespace HardwareMonitor.OpenHardwareMonitorUtils
                     h.HardwareType == HardwareType.GpuNvidia
                 );
             Update(hardware);
-
             return hardware;
         }
 
@@ -77,7 +75,6 @@ namespace HardwareMonitor.OpenHardwareMonitorUtils
                     h.HardwareType == HardwareType.HDD
                 );
             Update(hardware);
-
             return hardware;
         }
     }

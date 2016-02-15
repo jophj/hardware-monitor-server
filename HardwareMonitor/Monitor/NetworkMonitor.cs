@@ -13,7 +13,12 @@ namespace HardwareMonitor.Monitor
 {
     public class NetworkMonitor : IMonitor
     {
-        NetworkInterfaceConverter Converter = new NetworkInterfaceConverter();
+        private readonly NetworkInterfaceConverter _converter;
+
+        public NetworkMonitor(NetworkInterfaceConverter converter)
+        {
+            _converter = converter;
+        }
 
         public IEnumerable<IComponent> GetComponents()
         {
@@ -31,7 +36,7 @@ namespace HardwareMonitor.Monitor
 
         private async Task<IComponent> GetThroughputDataAsync(NetworkInterface netInterface)
         {
-            var component = Converter.ConvertNetworkInterface(netInterface);
+            var component = _converter.ConvertNetworkInterface(netInterface);
 
             DateTime startTime = DateTime.Now;
             long bytesReceived = netInterface.GetIPStatistics().BytesReceived;
