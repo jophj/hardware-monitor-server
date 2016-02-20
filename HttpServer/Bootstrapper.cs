@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading;
 using HardwareMonitor.HttpServer;
 using HardwareMonitor.HttpServer.Translator;
@@ -17,26 +18,35 @@ namespace HttpServer
     public class Bootstrapper: DefaultNancyBootstrapper
     {
         public static IComponentTranslator<IComponentDto> Translator = new ComponentToDtoTranslator();
-        public int WebServerPort = 6620;
+        public static int WebServerPort = 6620;
 
         public Bootstrapper()
         {
+            //netsh advfirewall firewall add rule name="Allow hardware monitor" protocol=TCP dir=in localport=6620 action=allow
             string webServerPortConfiguration = AppSettings["port"];
             if (!IsNullOrEmpty(webServerPortConfiguration))
                 WebServerPort = int.Parse(webServerPortConfiguration);
-        }
 
-        public void StartWebServer()
-        {
-            string uri = "http://localhost:" + WebServerPort+"/";
-            using (var host = new NancyHost(new Uri(uri)))
-            {
-                host.Start();
-                while (true)
-                {
-                    Thread.Sleep(1024);
-                }
-            }
+
+            // p.StartInfo.RedirectStandardOutput = true;
+
+            Process deleteRule = new Process();
+            deleteRule.StartInfo.FileName = "netsh";
+            deleteRule.StartInfo.Arguments =
+                $"advfirewall firewall delete rule name=\"Allow hardware monitor\"";
+            deleteRule.StartInfo.CreateNoWindow = true;
+            deleteRule.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            deleteRule.Start();
+            deleteRule.WaitForExit();
+
+            Process addRule = new Process();
+            addRule.StartInfo.FileName = "netsh";
+            addRule.StartInfo.Arguments =
+                $"advfirewall firewall add rule name=\"Allow hardware monitor\" protocol=TCP dir=in localport={WebServerPort} action=allow";
+            addRule.StartInfo.CreateNoWindow = true;
+            addRule.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            addRule.Start();
+            addRule.WaitForExit();
         }
 
         protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
