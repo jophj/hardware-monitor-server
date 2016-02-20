@@ -10,7 +10,9 @@ namespace HardwareMonitorApplication
         }
     }
 
-    class HardwareMonitorApplication
+    public interface ServiceManager
     {
+
+        void InstallService();
     }
 }
