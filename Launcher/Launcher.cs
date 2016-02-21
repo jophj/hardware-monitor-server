@@ -11,9 +11,14 @@ namespace Launcher
     {
         public static void Main()
         {
-            Process process = new Process();
-            process.StartInfo.FileName = "HardwareMonitorApplication.exe";
-            process.StartInfo.Verb = "runas";
+            Process process = new Process
+            {
+                StartInfo =
+                {
+                    FileName = "HardwareMonitorApplication.exe",
+                    Verb = "runas"
+                }
+            };
             process.Start();
         }
     }

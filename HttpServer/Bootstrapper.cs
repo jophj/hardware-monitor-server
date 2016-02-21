@@ -22,13 +22,9 @@ namespace HttpServer
 
         public Bootstrapper()
         {
-            //netsh advfirewall firewall add rule name="Allow hardware monitor" protocol=TCP dir=in localport=6620 action=allow
             string webServerPortConfiguration = AppSettings["port"];
             if (!IsNullOrEmpty(webServerPortConfiguration))
                 WebServerPort = int.Parse(webServerPortConfiguration);
-
-
-            // p.StartInfo.RedirectStandardOutput = true;
 
             Process deleteRule = new Process();
             deleteRule.StartInfo.FileName = "netsh";
