@@ -17,9 +17,12 @@ namespace HardwareMonitorService
 
         protected override void OnStart(string[] args)
         {
-            CreateFirewallRule(6620);
+            SettingsManager settingsManager = new SettingsManager();
+            int webServerPort = settingsManager.GetSettings().WebServerPort;
+            CreateFirewallRule(webServerPort);
 
-            string uri = "http://localhost:" + Bootstrapper.WebServerPort + "/";
+            var porcodio = Bootstrapper.IfIDontAccessThisPropertyServiceDoesntStarts;
+            string uri = "http://localhost:" + webServerPort + "/";
             _host = new NancyHost(new Uri(uri));
             _host.Start();
         }

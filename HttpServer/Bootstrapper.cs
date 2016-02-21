@@ -1,24 +1,22 @@
-﻿using System;
-using System.Diagnostics;
-using System.Threading;
-using HardwareMonitor.HttpServer;
+﻿using HardwareMonitor.HttpServer;
 using HardwareMonitor.HttpServer.Translator;
 using HardwareMonitor.Model.Translator;
 using HardwareMonitor.Monitor;
 using HardwareMonitor.NetworkUtils;
 using Nancy;
 using Nancy.Bootstrapper;
-using Nancy.Hosting.Self;
 using Nancy.TinyIoc;
-using static System.Configuration.ConfigurationSettings;
-using static System.String;
 
 namespace HttpServer
 {
     public class Bootstrapper: DefaultNancyBootstrapper
     {
         public static IComponentTranslator<IComponentDto> Translator = new ComponentToDtoTranslator();
-        public static int WebServerPort = 6620;
+        public static int IfIDontAccessThisPropertyServiceDoesntStarts = 6620;
+
+        public Bootstrapper()
+        {
+        }
 
         protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
         {
