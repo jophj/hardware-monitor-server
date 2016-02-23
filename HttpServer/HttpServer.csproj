@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Module\ApiModule.cs" />
     <Compile Include="Module\CpuModule.cs" />
+    <Compile Include="Module\DriveModule.cs" />
     <Compile Include="Module\GpuModule.cs" />
     <Compile Include="Module\MemoryModule.cs" />
     <Compile Include="Bootstrapper.cs" />

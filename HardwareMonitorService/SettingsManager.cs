@@ -23,6 +23,28 @@ namespace HardwareMonitorService
             return JsonConvert.DeserializeObject<ServiceSettings>(fileContent);
         }
 
+        public void SetSettings(ServiceSettings settings)
+        {
+            string json = JsonConvert.SerializeObject(settings);
+            WriteSettingsFile(json);
+        }
+
+        private void WriteSettingsFile(string json)
+        {
+            StreamWriter fileStream = null;
+            try
+            {
+                fileStream = new StreamWriter(_settingsFileName, false);
+            }
+            catch
+            {
+                return;
+            }
+
+            fileStream.Write(json);
+            fileStream.Close();
+        }
+
         private string ReadSettingsFile()
         {
             StreamReader fileStream = null;

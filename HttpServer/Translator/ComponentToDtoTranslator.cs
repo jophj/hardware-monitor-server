@@ -18,7 +18,8 @@ namespace HardwareMonitor.HttpServer.Translator
                 { typeof(MemoryComponent), ComponentType.Memory},
                 { typeof(GpuComponent), ComponentType.Gpu},
                 { typeof(StorageComponent), ComponentType.Storage},
-                { typeof(NetworkComponent), ComponentType.Network}
+                { typeof(NetworkComponent), ComponentType.Network},
+                { typeof(DriveComponent), ComponentType.Drive}
             };
         }
 
@@ -53,6 +54,11 @@ namespace HardwareMonitor.HttpServer.Translator
         }
 
         public IComponentDto Translate(NetworkComponent component)
+        {
+            return DoTranslation(component);
+        }
+
+        public IComponentDto Translate(DriveComponent component)
         {
             return DoTranslation(component);
         }

@@ -9,7 +9,8 @@ namespace HardwareMonitor.HttpServer
         Memory,
         Gpu,
         Storage,
-        Network
+        Network,
+        Drive
     }
 
     public enum SensorType

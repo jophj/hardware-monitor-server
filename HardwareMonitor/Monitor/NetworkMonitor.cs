@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.NetworkInformation;
-using System.Threading;
 using System.Threading.Tasks;
 using HardwareMonitor.Model;
 using HardwareMonitor.NetworkUtils;
-using OpenHardwareMonitor.Collections;
 
 namespace HardwareMonitor.Monitor
 {
@@ -22,8 +19,6 @@ namespace HardwareMonitor.Monitor
 
         public IEnumerable<IComponent> GetComponents()
         {
-            Collection<IComponent> netComponents = new Collection<IComponent>();
-
             IEnumerable<Task<IComponent>> tasks = NetworkInterface.GetAllNetworkInterfaces().Select(GetThroughputDataAsync);
             IComponent[] components = WaitForResults(tasks).Result;
             return components;

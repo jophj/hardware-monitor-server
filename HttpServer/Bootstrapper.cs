@@ -31,6 +31,7 @@ namespace HttpServer
                 container.Register<MemoryMonitor, MemoryMonitor>();
                 container.Register<NetworkMonitor, NetworkMonitor>();
                 container.Register<StorageMonitor, StorageMonitor>();
+                container.Register<DriveMonitor, DriveMonitor>();
 
                 container.Register<IComponentTranslator<IComponentDto>, ComponentToDtoTranslator>().AsSingleton();
 

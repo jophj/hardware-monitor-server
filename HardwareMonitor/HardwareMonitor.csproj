@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Monitor\DriveMonitor.cs" />
     <Compile Include="Monitor\Monitor.cs" />
     <Compile Include="Monitor\MyOpenHardwareMonitor.cs" />
     <Compile Include="Monitor\NetworkMonitor.cs" />

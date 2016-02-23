@@ -45,6 +45,14 @@ namespace HardwareMonitor.Model
         }
     }
 
+    public class DriveComponent : Component
+    {
+        public override TDest TranslateWith<TDest>(IComponentTranslator<TDest> translator)
+        {
+            return translator.Translate(this);
+        }
+    }
+
     public class NetworkComponent : Component
     {
         public override TDest TranslateWith<TDest>(IComponentTranslator<TDest> translator)

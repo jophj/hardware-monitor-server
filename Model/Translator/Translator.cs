@@ -7,6 +7,7 @@
         TDest Translate(GpuComponent gpuComponent);
         TDest Translate(StorageComponent storageComponent);
         TDest Translate(NetworkComponent networkComponent);
+        TDest Translate(DriveComponent driveComponent);
     }
 
 

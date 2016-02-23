@@ -66,7 +66,7 @@ namespace HardwareMonitor.Monitor
     {
         internal override IComponent GetEmptyComponent()
         {
-            return new GpuComponent();
+            return new StorageComponent();
         }
 
         internal override IEnumerable<IHardware> GetHardware(OpenHardwareMonitorService openHardwareMonitor)
