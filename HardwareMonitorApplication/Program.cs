@@ -12,10 +12,8 @@ namespace HardwareMonitorApplication
         static void Main()
         {
             var hardwareMonitorServiceExe = new FileInfo("HardwareMonitorService.exe");
-            ServiceManager serviceManager = new ServiceManager("HardwareMonitor", hardwareMonitorServiceExe.FullName);
 
-            SettingsManager settingsManager = new SettingsManager();
-            settingsManager.SetSettings(new ServiceSettings() {WebServerPort = 6620});
+            ServiceManager serviceManager = new ServiceManager("HardwareMonitor", hardwareMonitorServiceExe.FullName);
             serviceManager.StopService();
             serviceManager.DeleteService();
             serviceManager.CreateService();

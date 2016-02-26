@@ -12,7 +12,7 @@ namespace HttpServer
     public class Bootstrapper: DefaultNancyBootstrapper
     {
         public static IComponentTranslator<IComponentDto> Translator = new ComponentToDtoTranslator();
-        public static int IfIDontAccessThisPropertyServiceDoesntStarts = 6620;
+        public static int StaticConstructorCall = 6620;
 
         public Bootstrapper()
         {

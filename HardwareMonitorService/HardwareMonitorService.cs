@@ -21,7 +21,7 @@ namespace HardwareMonitorService
             int webServerPort = settingsManager.GetSettings().WebServerPort;
             CreateFirewallRule(webServerPort);
 
-            var cantUnderstandWhy = Bootstrapper.IfIDontAccessThisPropertyServiceDoesntStarts;
+            var staticConstructorCall = Bootstrapper.StaticConstructorCall;
 
             string uri = $"http://localhost:{webServerPort}/";
             _host = new NancyHost(new Uri(uri));
