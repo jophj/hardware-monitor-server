@@ -19,6 +19,7 @@ namespace HardwareMonitorApplication
             serviceManager.CreateService();
             serviceManager.StartService();
 
+            // use this code to run service code inside application
             /*string uri = $"http://localhost:{6200}/";
             var _host = new NancyHost(new Uri(uri));
             _host.Start();
