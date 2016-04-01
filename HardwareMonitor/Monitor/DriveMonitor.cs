@@ -9,7 +9,9 @@ namespace HardwareMonitor.Monitor
     {
         public IEnumerable<IComponent> GetComponents()
         {
-            return DriveInfo.GetDrives().Select(GetDriveComponent);
+            return DriveInfo.GetDrives()
+                .Where(d => d.TotalSize > 0 && d.TotalFreeSpace > 0)
+                .Select(GetDriveComponent);
         }
 
         private DriveComponent GetDriveComponent(DriveInfo drive)
