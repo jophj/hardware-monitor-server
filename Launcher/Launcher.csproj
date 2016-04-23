@@ -29,7 +29,7 @@
     <ProductName>Sentient</ProductName>
     <PublisherName>Sentient Inc.</PublisherName>
     <SuiteName>Sentient</SuiteName>
-    <ApplicationRevision>23</ApplicationRevision>
+    <ApplicationRevision>24</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
