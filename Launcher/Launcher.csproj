@@ -15,7 +15,7 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\jopme\Desktop\hardware-monitor-deploy\</PublishUrl>
+    <PublishUrl>C:\Users\jop\Desktop\hardware-monitor-deploy\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -25,11 +25,11 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <UpdateUrl>http://52.26.147.171/hardware-monitor/</UpdateUrl>
+    <UpdateUrl>https://s3.amazonaws.com/sentientapp/hardware-monitor/</UpdateUrl>
     <ProductName>Sentient</ProductName>
     <PublisherName>Sentient Inc.</PublisherName>
     <SuiteName>Sentient</SuiteName>
-    <ApplicationRevision>24</ApplicationRevision>
+    <ApplicationRevision>28</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -76,7 +76,7 @@
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>sentient_logo_icon.ico</ApplicationIcon>
+    <ApplicationIcon>sentient_logo_icon_v2.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -156,6 +156,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="sentient_logo_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="sentient_logo_icon_v2.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

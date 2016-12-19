@@ -1,8 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Threading;
-using HardwareMonitorService;
-using Nancy.Hosting.Self;
 
 namespace HardwareMonitorApplication
 {
@@ -20,13 +17,13 @@ namespace HardwareMonitorApplication
             serviceManager.StartService();
 
             // use this code to run service code inside application
-            /*string uri = $"http://localhost:{6200}/";
-            var _host = new NancyHost(new Uri(uri));
-            _host.Start();
-            while (true)
-            {
-                Thread.Sleep(123);
-            }*/
+            // string uri = $"http://localhost:{6620}/";
+            //var _host = new NancyHost(new Uri(uri));
+            //_host.Start();
+            //while (true)
+            //{
+            //  Thread.Sleep(123);
+            //}
         }
     }
 }
