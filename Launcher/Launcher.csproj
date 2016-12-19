@@ -25,11 +25,11 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <UpdateUrl>https://s3.amazonaws.com/sentientapp/hardware-monitor/</UpdateUrl>
+    <UpdateUrl>https://s3.amazonaws.com/sentientapp/download/</UpdateUrl>
     <ProductName>Sentient</ProductName>
     <PublisherName>Sentient Inc.</PublisherName>
     <SuiteName>Sentient</SuiteName>
-    <ApplicationRevision>28</ApplicationRevision>
+    <ApplicationRevision>30</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
