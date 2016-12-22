@@ -14,12 +14,17 @@ namespace HardwareMonitorService
                 IEnumerable<RegistryKey> usersKeys = Registry.Users.GetSubKeyNames().Select(n => Registry.Users.OpenSubKey(n));
                 foreach (RegistryKey userKey in usersKeys)
                 {
+                    EventLogger.LogDebug("userKey " + userKey.Name);
+
                     RegistryKey uninstallKey = userKey.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall");
+                    EventLogger.LogDebug("uninstallKey is null " + (uninstallKey == null));
                     if (uninstallKey != null)
                     {
                         IEnumerable<RegistryKey> appKeys = uninstallKey.GetSubKeyNames().Select(n => uninstallKey.OpenSubKey(n));
                         foreach (RegistryKey appKey in appKeys)
                         {
+                            EventLogger.LogDebug("appKey " + appKey.Name);
+
                             if (
                                 appKey.GetValue("DisplayName") != null &&
                                 appKey.GetValueKind("DisplayName") == RegistryValueKind.String &&
@@ -35,9 +40,7 @@ namespace HardwareMonitorService
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.GetType().Name);
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.StackTrace);
+                EventLogger.LogError(e.StackTrace);
                 return true;
             }
         }

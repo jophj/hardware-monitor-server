@@ -12,6 +12,7 @@ namespace HardwareMonitorService
 
         public HardwareMonitorService()
         {
+            EventLogger.LogDebug("Service started");
             InitializeComponent();
         }
 
@@ -20,12 +21,22 @@ namespace HardwareMonitorService
             SettingsManager settingsManager = new SettingsManager();
             int webServerPort = settingsManager.GetSettings().WebServerPort;
             CreateFirewallRule(webServerPort);
+            EventLogger.LogDebug("Firewall rule created");
 
             var staticConstructorCall = Bootstrapper.StaticConstructorCall;
 
-            string uri = $"http://localhost:{webServerPort}/";
-            _host = new NancyHost(new Uri(uri));
-            _host.Start();
+            EventLogger.LogDebug("Starting Nancy host");
+            try
+            {
+                string uri = $"http://localhost:{webServerPort}/";
+                _host = new NancyHost(new Uri(uri));
+                _host.Start();
+                EventLogger.LogDebug("Nancy host started");
+            }
+            catch (Exception e)
+            {
+                EventLogger.LogError(e.StackTrace);
+            }
         }
 
         private void CreateFirewallRule(int webServerPort)
