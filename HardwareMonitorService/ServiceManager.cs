@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace HardwareMonitorApplication
+namespace HardwareMonitorService
 {
     public interface IServiceManager
     {

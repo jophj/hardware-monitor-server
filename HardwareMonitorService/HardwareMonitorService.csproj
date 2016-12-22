@@ -67,6 +67,7 @@
     <Compile Include="HardwareMonitorService.Designer.cs">
       <DependentUpon>HardwareMonitorService.cs</DependentUpon>
     </Compile>
+    <Compile Include="InstallChecker.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceManager.cs" />
