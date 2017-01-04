@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HardwareMonitor", "HardwareMonitor\HardwareMonitor.csproj", "{EDB964A3-62A8-42FC-BF16-86DFC1B0F8C3}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -23,9 +23,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpServer", "HttpServer\Ht
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HardwareMonitorApplication", "HardwareMonitorApplication\HardwareMonitorApplication.csproj", "{DB09BDA9-EFD7-483D-98C1-3946DB322642}"
-	ProjectSection(ProjectDependencies) = postProject
-		{4CA28392-5E57-4E64-A426-12780F2F475E} = {4CA28392-5E57-4E64-A426-12780F2F475E}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Launcher", "Launcher\Launcher.csproj", "{AE61A5DC-8A38-4033-A793-CDB015EAD7FA}"
 	ProjectSection(ProjectDependencies) = postProject

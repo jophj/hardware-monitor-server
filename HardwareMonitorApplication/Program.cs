@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using HardwareMonitorService;
 using Nancy.Hosting.Self;
 using System.Threading;
 
@@ -13,23 +12,14 @@ namespace HardwareMonitorApplication
         {
             var hardwareMonitorServiceExe = new FileInfo("HardwareMonitorService.exe");
 
-            ServiceManager serviceManager = new ServiceManager("HardwareMonitor", hardwareMonitorServiceExe.FullName);
-            serviceManager.StopService();
-            serviceManager.DeleteService();
-            serviceManager.CreateService();
-            serviceManager.StartService();
-
-            EventLogger.LogDebug("Application started");
-            Console.WriteLine("Is Sentient installed - Application level check: " + InstallChecker.IsSentientInstalled());
-
             // use this code to run service code inside application
-            // string uri = $"http://localhost:{6621}/";
-            // var _host = new NancyHost(new Uri(uri));
-            // _host.Start();
-            // while (true)
-            // {
-            // Thread.Sleep(123);
-            // }
+            string uri = $"http://localhost:{6620}/";
+            var _host = new NancyHost(new Uri(uri));
+            _host.Start();
+            while (true)
+            {
+                Thread.Sleep(128);
+            }
         }
     }
 }

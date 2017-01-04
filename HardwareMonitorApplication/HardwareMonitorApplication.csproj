@@ -134,12 +134,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HardwareMonitorService\HardwareMonitorService.csproj">
-      <Project>{4ca28392-5e57-4e64-a426-12780f2f475e}</Project>
-      <Name>HardwareMonitorService</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
@@ -150,6 +144,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HttpServer\HttpServer.csproj">
+      <Project>{598eb8a4-adc9-4d7b-91e8-7a9345b30c50}</Project>
+      <Name>HttpServer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
