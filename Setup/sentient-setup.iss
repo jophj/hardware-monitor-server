@@ -27,7 +27,7 @@ Compression=lzma
 SolidCompression=yes
 PrivilegesRequired=admin
 UninstallDisplayIcon={app}\\sentient_logo_icon_v2.ico
-CloseApplications=yes
+CloseApplications=force
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -67,3 +67,4 @@ Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Run"; ValueType: 
 
 [UninstallRun]
 Filename: "netsh"; Parameters: "advfirewall firewall delete rule name=Sentient"
+Filename: "{cmd}"; Parameters: "/C ""taskkill /im HardwareMonitorApplication.exe /f /t"
