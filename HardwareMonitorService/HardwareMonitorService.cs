@@ -18,17 +18,17 @@ namespace HardwareMonitorService
 
         protected override void OnStart(string[] args)
         {
-            SettingsManager settingsManager = new SettingsManager();
-            int webServerPort = settingsManager.GetSettings().WebServerPort;
-            CreateFirewallRule(webServerPort);
-            EventLogger.LogDebug("Firewall rule created");
+            // SettingsManager settingsManager = new SettingsManager();
+            // int webServerPort = settingsManager.GetSettings().WebServerPort;
+            // CreateFirewallRule(webServerPort);
+            // EventLogger.LogDebug("Firewall rule created");
 
             var staticConstructorCall = Bootstrapper.StaticConstructorCall;
 
             EventLogger.LogDebug("Starting Nancy host");
             try
             {
-                string uri = $"http://localhost:{webServerPort}/";
+                string uri = $"http://localhost:{6620}/";
                 _host = new NancyHost(new Uri(uri));
                 _host.Start();
                 EventLogger.LogDebug("Nancy host started");

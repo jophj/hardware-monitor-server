@@ -36,13 +36,17 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 Source: "..\HardwareMonitorApplication\bin\Release\HardwareMonitor.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\HardwareMonitorApplication\bin\Release\HardwareMonitor.pdb"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\HardwareMonitorApplication\bin\Release\HardwareMonitorApplication.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\HardwareMonitorApplication\bin\Release\HardwareMonitorApplication.exe.config"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\HardwareMonitorApplication\bin\Release\HardwareMonitorApplication.pdb"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\HardwareMonitorApplication\bin\Release\HardwareMonitorApplication.vshost.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\HardwareMonitorApplication\bin\Release\HardwareMonitorApplication.vshost.exe.config"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\HardwareMonitorApplication\bin\Release\HardwareMonitorApplication.vshost.exe.manifest"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\HardwareMonitorApplication\bin\Release\HardwareMonitorService.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\HardwareMonitorApplication\bin\Release\HardwareMonitorService.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\HardwareMonitorApplication\bin\Release\HardwareMonitorService.sys"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\HardwareMonitorApplication\bin\Release\HttpServer.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\HardwareMonitorApplication\bin\Release\HttpServer.pdb"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\HardwareMonitorApplication\bin\Release\Model.dll"; DestDir: "{app}"; Flags: ignoreversion
@@ -51,14 +55,38 @@ Source: "..\HardwareMonitorApplication\bin\Release\Nancy.dll"; DestDir: "{app}";
 Source: "..\HardwareMonitorApplication\bin\Release\Nancy.Hosting.Self.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\HardwareMonitorApplication\bin\Release\Nancy.Hosting.Self.xml"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\HardwareMonitorApplication\bin\Release\Nancy.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\HardwareMonitorApplication\bin\Release\Newtonsoft.Json.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\HardwareMonitorApplication\bin\Release\Newtonsoft.Json.xml"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\HardwareMonitorApplication\bin\Release\OpenHardwareMonitorLib.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\HardwareMonitorApplication\sentient_logo_icon_v2.ico"; DestDir: "{app}"
+Source: "..\HardwareMonitorApplication\sentient_logo_icon_v2.ico"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\sentient_logo_icon_v2.ico"
 Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\sentient_logo_icon_v2.ico"; Tasks: desktopicon
 
+[Code]
+function PrepareToInstall(var NeedsRestart: Boolean): String;
+var
+  ResultCode: integer;
+begin
+
+  // Launch Notepad and wait for it to terminate
+  if Exec('sc', 'stop HardwareMonitor', '', SW_HIDE,
+     ewWaitUntilTerminated, ResultCode) then
+  begin
+    // handle success if necessary; ResultCode contains the exit code
+  end
+  else begin
+    // handle failure if necessary; ResultCode contains the error code
+  end;
+
+  // Proceed Setup
+  Result := '';
+
+end;
+
 [Run]
+Filename: "sc"; Parameters: "stop HardwareMonitor"
 Filename: "netsh"; Parameters: "advfirewall firewall add rule name=Sentient protocol=TCP dir=in localport=6620 action=allow"
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent runascurrentuser
 
@@ -67,4 +95,6 @@ Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Run"; ValueType: 
 
 [UninstallRun]
 Filename: "netsh"; Parameters: "advfirewall firewall delete rule name=Sentient"
-Filename: "{cmd}"; Parameters: "/C ""taskkill /im HardwareMonitorApplication.exe /f /t"
+Filename: "taskkill"; Parameters: "/im HardwareMonitorApplication.exe /f /t"
+Filename: "sc"; Parameters: "stop HardwareMonitor"
+Filename: "sc"; Parameters: "delete HardwareMonitor"
