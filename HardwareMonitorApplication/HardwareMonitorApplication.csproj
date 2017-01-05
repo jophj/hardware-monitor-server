@@ -145,6 +145,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HardwareMonitorService\HardwareMonitorService.csproj">
+      <Project>{4CA28392-5E57-4E64-A426-12780F2F475E}</Project>
+      <Name>HardwareMonitorService</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HttpServer\HttpServer.csproj">
       <Project>{598eb8a4-adc9-4d7b-91e8-7a9345b30c50}</Project>
       <Name>HttpServer</Name>
