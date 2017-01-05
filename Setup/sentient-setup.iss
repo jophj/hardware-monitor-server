@@ -27,6 +27,7 @@ Compression=lzma
 SolidCompression=yes
 PrivilegesRequired=admin
 UninstallDisplayIcon={app}\\sentient_logo_icon_v2.ico
+CloseApplications=yes
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -56,7 +57,6 @@ Source: "..\HardwareMonitorApplication\sentient_logo_icon_v2.ico"; DestDir: "{ap
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\sentient_logo_icon_v2.ico"
 Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\sentient_logo_icon_v2.ico"; Tasks: desktopicon
-startmenu
 
 [Run]
 Filename: "netsh"; Parameters: "advfirewall firewall add rule name=Sentient protocol=TCP dir=in localport=6620 action=allow"
