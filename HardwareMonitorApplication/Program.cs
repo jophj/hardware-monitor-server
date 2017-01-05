@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using HardwareMonitorService;
+using System.Windows.Forms;
 
 namespace HardwareMonitorApplication
 {
@@ -9,6 +10,10 @@ namespace HardwareMonitorApplication
         [STAThread]
         static void Main()
         {
+            Form f = new Form();
+
+            Application.Run();
+
             var hardwareMonitorServiceExe = new FileInfo("HardwareMonitorService.exe");
 
             ServiceManager serviceManager = new ServiceManager("HardwareMonitor", hardwareMonitorServiceExe.FullName);
