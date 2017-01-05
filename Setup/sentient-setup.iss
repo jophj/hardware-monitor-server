@@ -86,12 +86,8 @@ begin
 end;
 
 [Run]
-Filename: "sc"; Parameters: "stop HardwareMonitor"
 Filename: "netsh"; Parameters: "advfirewall firewall add rule name=Sentient protocol=TCP dir=in localport=6620 action=allow"
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent runascurrentuser
-
-[Registry]
-Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "Sentient"; ValueData: "{app}\HardwareMonitorApplication.exe"; Flags: uninsdeletevalue
 
 [UninstallRun]
 Filename: "netsh"; Parameters: "advfirewall firewall delete rule name=Sentient"
