@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Sentient"
-#define MyAppVersion "1.0"
+#define MyAppVersion "1.1"
 #define MyAppPublisher "Jop, Inc."
 #define MyAppURL "http://www.sentientapp.com/"
 #define MyAppExeName "HardwareMonitorApplication.exe"
