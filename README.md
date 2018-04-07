@@ -1,6 +1,6 @@
 # hardware-monitor-server
 
-A real-time hardware monitor server providing API to be consumed through http. Used by Sentient (http://sentientapp.com).
+A real-time hardware monitor server providing API to be consumed through http. Used by Sentient (https://sentient.jop.space).
 
 Simply open the solution with Visual Studio and install Nu-Get packages. Set HardwareMonitorApplication as start up project and let it go.
 You need to run Visual Studio as Administrator to be able to read hardware sensors.
